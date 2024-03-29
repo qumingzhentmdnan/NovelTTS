@@ -30,7 +30,7 @@ public class HandleTextUtil {
             String nextLine = null;
 
             //定义一个正则表达式，匹配“第xxx章  标题”
-            Pattern chapterPattern = Pattern.compile("^第.*章.*$");
+            Pattern chapterPattern = Pattern.compile("^.*第.*章.*$");
 
             //读取文件内容
             while ((nextLine != null) || (line = bufferedReader.readLine()) != null) {

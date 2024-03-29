@@ -22,11 +22,11 @@ public class HandleAudioUtil {
     //将一段文本转换为音频
     private static boolean getAudio(String filePath,String character,String emotion,String text,Integer batch_size,Double speed) throws IOException {
 
-//        String url = ProgramUtil.getConfigByKey("url");
-//        if(url==null||url.isEmpty())
-//            System.err.println("HandleAudioUtil=>getAudio:未配置url");
-//        URL obj = new URL(url+"/tts");
-        URL obj = new URL("http://localhost:6006/tts");
+        String url = ProgramUtil.getConfigByKey("url");
+        if(url==null||url.isEmpty())
+            System.err.println("HandleAudioUtil=>getAudio:未配置url");
+        URL obj = new URL(url+"/tts");
+        //URL obj = new URL("http://localhost:5000/tts");
         HttpURLConnection  con = (HttpURLConnection) obj.openConnection();
 
         // 设置请求方法
@@ -36,16 +36,16 @@ public class HandleAudioUtil {
         // 创建一个Map来存储参数
         Map<String, Object> params = new HashMap<>();
         if(character!=null&&!character.isEmpty())
-            params.put("character", character);
+            params.put("character", character);//早期版本GPT-Sovits-Interface中参数名为cha_name
         if(emotion!=null&&!emotion.isEmpty())
-            params.put("emotion", emotion);
+            params.put("emotion", emotion);//早期版本GPT-Sovits-Interface中参数名为cha_name
         if(batch_size!=null)
             params.put("batch_size", batch_size);
         if(text!=null&&!text.isEmpty())
             params.put("text", text);
         if(speed!=null)
             params.put("speed", speed);
-        params.put("text_language","中英混合");
+        params.put("text_language","中文");
         // 将Map转换为JSON格式的字符串
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonParams = objectMapper.writeValueAsString(params);
@@ -155,13 +155,13 @@ public class HandleAudioUtil {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\test\\新建 文本文档.txt"));
-        String str;
-        int index=0;
-        while((str=bufferedReader.readLine())!=null){
-            System.out.println(str);
-            getAudio("E:\\test\\audio\\"+(index++)+".wav","莱欧斯利","中立",str,200,1.0);
-        }
-    }
+//    public static void main(String[] args) throws IOException {
+//        BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\audio\\text.txt"));
+//        String str;
+//        int index=0;
+//        while((str=bufferedReader.readLine())!=null){
+//                System.out.println(str);
+//                getAudio("E:\\audio\\res\\"+(index++)+(str.length()>100?str.substring(0,100):str)+".wav","芙卡洛斯","default",str,50,1.0);
+//        }
+//    }
 }

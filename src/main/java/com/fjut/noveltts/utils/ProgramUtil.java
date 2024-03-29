@@ -14,13 +14,14 @@ import java.util.*;
 
 //用于读写txt文件中写入配置
 public class ProgramUtil {
+    private static String path="./config.txt";
     //向配置文件中添加配置
     public static void addConfig(Map<String, String> map) {
         try {
             Properties properties = new Properties();
-            properties.load(new FileReader("./config.txt"));
+            properties.load(new FileReader(path));
             properties.putAll(map);
-            properties.store(new FileWriter("./config.txt"), null);
+            properties.store(new FileWriter(path), null);
         } catch (IOException e) {
             System.err.println("addConfig=>"+e);
         }
@@ -29,9 +30,9 @@ public class ProgramUtil {
     public static void addConfig(String key,String value) {
         try {
             Properties properties = new Properties();
-            properties.load(new FileReader("./config.txt"));
+            properties.load(new FileReader(path));
             properties.setProperty(key,value);
-            properties.store(new FileWriter("./config.txt"), null);
+            properties.store(new FileWriter(path), null);
         } catch (IOException e) {
             System.err.println("addConfig=>"+e);
         }
@@ -41,7 +42,7 @@ public class ProgramUtil {
     public static Map<String,String> getconfig() {
         try {
             Properties properties = new Properties();
-            properties.load(new FileReader("./config.txt"));
+            properties.load(new FileReader(path));
             Map<String, String> stringMap = new HashMap<>();
             for (Map.Entry<Object, Object> entry : properties.entrySet()) {
                 stringMap.put(entry.getKey().toString(), entry.getValue().toString());
@@ -94,9 +95,9 @@ public class ProgramUtil {
     public static void deleteConfig(String speaker) {
         try {
             Properties properties = new Properties();
-            properties.load(new FileReader("./config.txt"));
+            properties.load(new FileReader(path));
             properties.remove(speaker);
-            properties.store(new FileWriter("./config.txt"), null);
+            properties.store(new FileWriter(path), null);
         } catch (IOException e) {
             System.err.println("getconfig=>"+e);
         }
