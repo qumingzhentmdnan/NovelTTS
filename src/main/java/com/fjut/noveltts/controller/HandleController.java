@@ -156,7 +156,7 @@ public class HandleController {
         String novelPath = ProgramUtil.getConfigByKey("novelPath");
         if(novelPath==null)
             return Result.error().message("未配置小说文件路径");
-        ArrayList<SentenceInfo> sentenceInfos = HandleTextUtil.formatArticle(novelPath.replace(".txt", "") + "\\" + articleName);
+        ArrayList<SentenceInfo> sentenceInfos = HandleTextUtil.formatArticle(novelPath.replace(".txt", "") + "/" + articleName);
         if(sentenceInfos==null)
             return Result.error();
         return Result.ok().data("sentenceInfos",sentenceInfos);
@@ -169,7 +169,7 @@ public class HandleController {
     public Result saveFormatArticle(@RequestBody ArticleData articleData){
         if(articleData.getNovelName()==null)
             return Result.error().message("小说名不能为空");
-        String novelPath = ProgramUtil.getConfigByKey("novelPath")+"format\\";
+        String novelPath = ProgramUtil.getConfigByKey("novelPath")+"format/";
         new File(novelPath).mkdirs();
         HandleTextUtil.saveFormatArticle(novelPath+articleData.getNovelName(),articleData.getSentenceInfo());
         return Result.ok();
@@ -181,7 +181,7 @@ public class HandleController {
         try {
             String novelPath = ProgramUtil.getConfigByKey("novelPath");
             ArrayList<SentenceInfo> sentenceInfo = null;
-            File[] files = new File(novelPath+"format\\").listFiles();
+            File[] files = new File(novelPath+"format/").listFiles();
             for (File file : files) {
                 // 创建 ObjectMapper 对象
                 ObjectMapper mapper = new ObjectMapper();

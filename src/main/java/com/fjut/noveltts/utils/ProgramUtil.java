@@ -1,12 +1,9 @@
 package com.fjut.noveltts.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fjut.noveltts.entity.SpeakerInfo;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -90,7 +87,6 @@ public class ProgramUtil {
         }
         return null;
     }
-
 
     public static void deleteConfig(String speaker) {
         try {

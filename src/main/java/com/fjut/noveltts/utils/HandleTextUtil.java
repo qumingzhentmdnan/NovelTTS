@@ -30,7 +30,7 @@ public class HandleTextUtil {
             String nextLine = null;
 
             //定义一个正则表达式，匹配“第xxx章  标题”
-            Pattern chapterPattern = Pattern.compile("^.*第.*章.*$");
+            Pattern chapterPattern = Pattern.compile("^.*第.{0,15}章.*$");
 
             //读取文件内容
             while ((nextLine != null) || (line = bufferedReader.readLine()) != null) {
@@ -74,7 +74,7 @@ public class HandleTextUtil {
             ArrayList<SentenceInfo> SentenceInfos = new ArrayList<>();
             //根据文件名创建文件读取流
             FileReader fileReader = new FileReader(path);
-            char[] str = new char[10000];
+            char[] str = new char[100000];
             //用于替换换行符
             String wrap = "\r\n";
             int legth = 0;
@@ -170,7 +170,7 @@ public class HandleTextUtil {
         Set<String> speakerSet =characterMap.keySet();
 
         //如果是章节名，不做处理
-        Pattern chapterPattern = Pattern.compile("^“.*第.*章.*。”$");
+        Pattern chapterPattern = Pattern.compile("^.*第.{0,15}章.*$");
         String sentence = nowSentence.getSentence();
         if (chapterPattern.matcher(sentence).matches()) {
             String res = sentence.replace("“", "").replace("”", "")

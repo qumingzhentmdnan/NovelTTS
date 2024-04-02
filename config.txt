@@ -1,0 +1,10 @@
+#Tue Mar 26 20:38:03 CST 2024
+batchSize=10
+defaultDialogueCharacter=三月七
+defaultDialogueEmotion=厌恶
+defaultNarrationCharacter=坎蒂丝
+defaultNarrationEmotion=default
+novelPath=E\:\\test\\1第一章 文德殿乱赋
+speed=1.1
+url=http\://127.0.0.1\:5000/
+周铭=克拉拉@&中立

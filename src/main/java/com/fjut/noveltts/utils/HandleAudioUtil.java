@@ -24,8 +24,8 @@ public class HandleAudioUtil {
 
         String url = ProgramUtil.getConfigByKey("url");
         if(url==null||url.isEmpty())
-            System.err.println("HandleAudioUtil=>getAudio:未配置url");
-        URL obj = new URL(url+"/tts");
+           System.err.println("HandleAudioUtil=>getAudio:未配置url");
+        URL obj = new URL(url+"tts");
         //URL obj = new URL("http://localhost:5000/tts");
         HttpURLConnection  con = (HttpURLConnection) obj.openConnection();
 
@@ -82,7 +82,7 @@ public class HandleAudioUtil {
         try {
             int index = 0;
             String title=text.get(0).getSentence().replace("。","");
-            String dir = path + "audio\\" +title+ "\\";
+            String dir = path + "audio/" +title+ "/";
             File file = new File(dir);
             if(!file.exists())
                 file.mkdirs();
@@ -99,7 +99,7 @@ public class HandleAudioUtil {
 //                System.out.println(sentenceInfo.getSentence());
 //                boolean audio = getAudio(dir+(index++)  + ".wav", sentenceInfo.getCharacter(), sentenceInfo.getEmotion(), sentenceInfo.getSentence(), sentenceInfo.getBatchSize(), sentenceInfo.getSpeed());
             }
-            mergeAndDeleteAudioFiles(path + "audio\\", title);
+            mergeAndDeleteAudioFiles(path + "audio/", title);
             file.delete();
         } catch (Exception e) {
             System.err.println("textToAudio=>"+e);
@@ -161,7 +161,7 @@ public class HandleAudioUtil {
 //        int index=0;
 //        while((str=bufferedReader.readLine())!=null){
 //                System.out.println(str);
-//                getAudio("E:\\audio\\res\\"+(index++)+(str.length()>100?str.substring(0,100):str)+".wav","芙卡洛斯","default",str,50,1.0);
+//                getAudio("E:\\audio\\res2\\"+(index++)+(str.length()>100?str.substring(0,100):str)+".wav","卡芙卡","悲伤",str,50,1.0);
 //        }
 //    }
 }

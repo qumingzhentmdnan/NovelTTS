@@ -53,7 +53,7 @@ public class HandleModelConfigUtil {
                 String json = new ObjectMapper().writeValueAsString(configMap);
 
                 //将文件写入到指定文件夹下的infer_config.json
-                File out = new File(modelPath + "\\"  + "infer_config.json");
+                File out = new File(modelPath + "/"  + "infer_config.json");
                 //如果文件不存在则创建文件
                 if (!out.exists())
                     out.createNewFile();

@@ -1,2 +1,9 @@
+#Tue Apr 02 11:44:45 CST 2024
 batchSize=100
+defaultDialogueCharacter=三月七
+defaultDialogueEmotion=厌恶
+defaultNarrationCharacter=三月七
+defaultNarrationEmotion=厌恶
+novelPath=E\:\\test\\紫川_原稿
 speed=1.0
+url=http\://127.0.0.1\:5000/
